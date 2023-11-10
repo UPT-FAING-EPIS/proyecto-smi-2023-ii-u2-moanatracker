@@ -1,2 +1,15 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/y1LgyCES)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=12835700&assignment_repo_type=AssignmentRepo)
+# PROYECTO DE UNIDAD I - MOANA TRACKER-
+
+# Idea:
+App de Seguimiento de Salud
+
+# Integrantes: 
+
+- Erick Mauricio Mamani Lima (2020066321)
+- Sebastian Airton Cotrina Caceres (2020067569)​
+- Josue Amaya Torres (2020067149) ​
+- Helbert Andres Condori Loayza (2020067571) ​
+- Diego Andre Aranda Reyes (2019063855)
+  
+# Tecnologia: Maui, python, SupaBase, Docker , Github Actions, MVVM, CI/CD, AI, RESTFUL, XCODE
+
