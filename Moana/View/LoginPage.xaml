@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Moana.View.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="LoginPage"
+    NavigationPage.BackButtonTitle=""
+    NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Image
+            Grid.Row="0"
+            Margin="20,50,20,20"
+            HeightRequest="100"
+            HorizontalOptions="CenterAndExpand"
+            Source="health_care.png"
+            VerticalOptions="CenterAndExpand" />
+
+        <Label
+            Grid.Row="1"
+            Margin="0,20,0,0"
+            FontSize="32"
+            HorizontalOptions="CenterAndExpand"
+            Text="Inicio de sesión"
+            VerticalOptions="CenterAndExpand" />
+
+        <Frame
+            Grid.Row="2"
+            Margin="20,25,20,0"
+            Padding="15,0,15,0"
+            BorderColor="White"
+            CornerRadius="25"
+            HasShadow="True"
+            HeightRequest="60">
+            <Entry
+                x:Name="EmailEntry"
+                BackgroundColor="White"
+                FontSize="16"
+                Keyboard="Email"
+                Placeholder="Usuario"
+                VerticalOptions="CenterAndExpand" />
+        </Frame>
+
+        <Frame
+            Grid.Row="3"
+            Margin="20,25,20,0"
+            Padding="15,0,15,0"
+            BorderColor="White"
+            CornerRadius="25"
+            HasShadow="True"
+            HeightRequest="60">
+            <Entry
+                x:Name="PasswordEntry"
+                BackgroundColor="White"
+                FontSize="16"
+                IsPassword="True"
+                Placeholder="Contraseña"
+                VerticalOptions="CenterAndExpand" />
+        </Frame>
+
+        <Button
+            Grid.Row="4"
+            Margin="20,20,20,0"
+            BackgroundColor="#007BFF"
+            Clicked="OnLoginButtonClicked"
+            CornerRadius="30"
+            FontSize="18"
+            HeightRequest="55"
+            Text="Iniciar sesión"
+            TextColor="White"
+            VerticalOptions="CenterAndExpand" />
+
+        <Label
+            x:Name="ResultLabel"
+            Grid.Row="5"
+            Margin="20,20"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand" />
+
+        <Grid
+            Grid.Row="6"
+            Margin="10,10,10,10"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand">
+            <StackLayout
+                Grid.Column="0"
+                HorizontalOptions="CenterAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="CenterAndExpand">
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Don't have an account? "
+                    TextColor="#A2A2A2"
+                    VerticalOptions="CenterAndExpand" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="15"
+                    Text="Sign Up"
+                    TextColor="#007BFF" />
+            </StackLayout>
+        </Grid>
+    </Grid>
+
+
+</ContentPage>

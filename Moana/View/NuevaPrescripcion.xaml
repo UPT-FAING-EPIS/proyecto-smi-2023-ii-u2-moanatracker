@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Moana.View.NuevaPrescripcion"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundColor="#EDF2F3"
+    NavigationPage.BackButtonTitle=""
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="0,15,15,10" Spacing="10">
+            <Frame
+                Margin="0,10,0,10"
+                Padding="5"
+                BackgroundColor="#EDF2F3"
+                BorderColor="Transparent"
+                HorizontalOptions="Start"
+                WidthRequest="130">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        x:Name="Back"
+                        NumberOfTapsRequired="1"
+                        Tapped="Back_Tapped" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,Auto">
+                    <ImageButton
+                        HeightRequest="15"
+                        HorizontalOptions="Start"
+                        Source="angulo_izquierdo.png"
+                        WidthRequest="25" />
+                    <Label
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        FontFamily="OpenSansRegular"
+                        FontSize="18"
+                        Text="Back" />
+                </Grid>
+            </Frame>
+
+            <StackLayout Padding="15,10,15,10">
+                <Label
+                    Margin="0,0,0,20"
+                    FontAttributes="Bold"
+                    FontSize="26"
+                    Text="Nueva prescripcion" />
+                <Frame
+                    Margin="0,0,0,10"
+                    Padding="5"
+                    BorderColor="Transparent"
+                    CornerRadius="10">
+                    <Entry
+                        x:Name="DniEntry"
+                        Margin="10,0,0,0"
+                        Keyboard="Numeric"
+                        Placeholder="DNI"
+                        PlaceholderColor="LightGray" />
+                </Frame>
+
+                <BoxView
+                    Margin="0,15,0,15"
+                    BackgroundColor="LightGray"
+                    HeightRequest="2"
+                    HorizontalOptions="FillAndExpand" />
+                <Frame
+                    Margin="0,0,0,10"
+                    Padding="5"
+                    BorderColor="Transparent"
+                    CornerRadius="10">
+                    <Entry
+                        x:Name="NombreEntry"
+                        Margin="10,0,0,0"
+                        Placeholder="Nombre" />
+                </Frame>
+
+                <Frame
+                    Margin="0,0,0,10"
+                    Padding="5"
+                    BorderColor="Transparent"
+                    CornerRadius="10">
+                    <Entry
+                        x:Name="ApellidoEntry"
+                        Margin="10,0,0,0"
+                        Placeholder="Apellido" />
+                </Frame>
+
+                <Frame
+                    Margin="0,0,0,10"
+                    Padding="5"
+                    BorderColor="Transparent"
+                    CornerRadius="10">
+                    <Entry
+                        x:Name="EdadEntry"
+                        Margin="10,0,0,0"
+                        Keyboard="Numeric"
+                        Placeholder="Edad" />
+                </Frame>
+
+                <Frame
+                    Margin="0,0,0,10"
+                    Padding="5"
+                    BorderColor="Transparent"
+                    CornerRadius="10">
+                    <Entry
+                        x:Name="CorreoEntry"
+                        Margin="10,0,0,0"
+                        Keyboard="Email"
+                        Placeholder="Correo" />
+                </Frame>
+                <Frame
+                    Margin="0,0,0,10"
+                    Padding="5"
+                    BorderColor="Transparent"
+                    CornerRadius="10">
+                    <Entry
+                        x:Name="DiagnosticoEntry"
+                        Margin="10,0,0,0"
+                        Placeholder="Diagnostico" />
+                </Frame>
+            </StackLayout>
+
+            <Button
+                Padding="15"
+                BackgroundColor="#007AFF"
+                Clicked="Button_Clicked"
+                CornerRadius="20"
+                HorizontalOptions="End"
+                Text="Siguiente →"
+                TextColor="White" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+

@@ -1,0 +1,95 @@
+<ContentPage
+    x:Class="Moana.View.MedicoHomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title=""
+    BackgroundColor="#EDF2F3"
+    NavigationPage.BackButtonTitle=""
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
+    <Grid Padding="5" RowDefinitions="auto,*">
+        <Grid Padding="0,10,0,0" ColumnDefinitions="*,4*,*,*">
+            <ImageButton
+                x:Name="puerta"
+                Grid.Column="0"
+                Clicked="puerta_Clicked"
+                HeightRequest="25"
+                HorizontalOptions="Start"
+                Source="puerta_abierta.svg" />
+            <ImageButton
+                x:Name="user"
+                Grid.Column="2"
+                Clicked="user_Clicked"
+                HeightRequest="25"
+                HorizontalOptions="CenterAndExpand"
+                Source="circulo_usuario.svg" />
+            <ImageButton
+                x:Name="config"
+                Grid.Column="3"
+                Clicked="config_Clicked"
+                HeightRequest="25"
+                HorizontalOptions="End"
+                Source="ajustes.svg" />
+        </Grid>
+        <Grid Grid.Row="1" Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Row="0"
+                Margin="10,50,0,20"
+                FontFamily="OpenSansRegular"
+                FontSize="24"
+                HorizontalOptions="Start"
+                Text="{Binding Saludo}"
+                TextColor="Black" />
+            <VerticalStackLayout Grid.Row="1">
+                <CarouselView IndicatorView="indicatorView" ItemsSource="{Binding CarouselItems}">
+
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Margin="10"
+                                Padding="5"
+                                BackgroundColor="#00a4e6"
+                                BorderColor="Transparent"
+                                CornerRadius="20"
+                                HeightRequest="160"
+                                HorizontalOptions="Center"
+                                MaximumHeightRequest="260"
+                                MinimumHeightRequest="100"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="260">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Command}" />
+                                </Frame.GestureRecognizers>
+                                <StackLayout>
+
+                                    <Label
+                                        Margin="0,5,0,10"
+                                        FontSize="18"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{Binding Text}"
+                                        TextColor="White" />
+                                    <Image
+                                        HeightRequest="100"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Source="{Binding ImageSource}"
+                                        WidthRequest="60" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <IndicatorView
+                    x:Name="indicatorView"
+                    HorizontalOptions="Center"
+                    IndicatorColor="LightGray"
+                    SelectedIndicatorColor="DarkGray" />
+
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+
+</ContentPage>
