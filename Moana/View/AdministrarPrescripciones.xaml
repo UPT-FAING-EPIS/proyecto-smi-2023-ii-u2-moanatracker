@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Moana.View.AdministrarPrescripciones"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="AdministrarPrescripciones"
+    BackgroundColor="#EDF2F3"
+    NavigationPage.BackButtonTitle=""
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="0,15,15,10" Spacing="10">
+            <Frame
+                Margin="0,0,0,10"
+                Padding="5"
+                BackgroundColor="#EDF2F3"
+                BorderColor="Transparent"
+                HorizontalOptions="Start"
+                WidthRequest="130">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        x:Name="Back"
+                        NumberOfTapsRequired="1"
+                        Tapped="Back_Tapped" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,Auto">
+                    <ImageButton
+                        HeightRequest="15"
+                        HorizontalOptions="Start"
+                        Source="angulo_izquierdo.png"
+                        WidthRequest="25" />
+                    <Label
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        FontFamily="OpenSansRegular"
+                        FontSize="18"
+                        Text="Back" />
+                </Grid>
+            </Frame>
+
+            <StackLayout Padding="15,10,15,10">
+
+                <Frame
+                    Margin="10"
+                    Padding="5"
+                    BackgroundColor="#00a4e6"
+                    BorderColor="Transparent"
+                    CornerRadius="20"
+                    HeightRequest="160"
+                    HorizontalOptions="Center"
+                    MaximumHeightRequest="260"
+                    MinimumHeightRequest="100"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="260">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer
+                            x:Name="NewPrescription"
+                            NumberOfTapsRequired="1"
+                            Tapped="NewPrescription_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout>
+
+                        <Label
+                            Margin="0,5,0,10"
+                            FontSize="18"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Nueva prescripcion"
+                            TextColor="White" />
+                        <Image
+                            HeightRequest="100"
+                            HorizontalOptions="CenterAndExpand"
+                            Source="tratamiento.svg"
+                            WidthRequest="60" />
+                    </StackLayout>
+                </Frame>
+                <Frame
+                    Margin="10"
+                    Padding="5"
+                    BackgroundColor="#00a4e6"
+                    BorderColor="Transparent"
+                    CornerRadius="20"
+                    HeightRequest="160"
+                    HorizontalOptions="Center"
+                    MaximumHeightRequest="260"
+                    MinimumHeightRequest="100"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="260">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer
+                            x:Name="AssignUser"
+                            NumberOfTapsRequired="1"
+                            Tapped="AssignUser_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout>
+
+                        <Label
+                            Margin="0,5,0,10"
+                            FontSize="18"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Asignar a usuario"
+                            TextColor="White" />
+                        <Image
+                            HeightRequest="100"
+                            HorizontalOptions="CenterAndExpand"
+                            Source="usuario_hospital.svg"
+                            WidthRequest="60" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

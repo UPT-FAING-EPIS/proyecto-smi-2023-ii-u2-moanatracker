@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Moana.View.DetallePaciente"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="DetallePaciente">
+    <StackLayout Margin="20">
+        <Label FontSize="18" Text="Nombre del Paciente:" />
+        <Label x:Name="lblNombrePaciente" FontSize="16" />
+
+        <Label
+            Margin="0,20,0,10"
+            FontSize="18"
+            Text="Enfermedad: Gripe" />
+        <Label x:Name="txtEnfermedad" FontSize="16" />
+
+        <Label
+            Margin="0,20,0,10"
+            FontSize="18"
+            Text="Lista de Pastillas:" />
+        <ListView x:Name="lstPastillas" SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Label
+                                FontSize="16"
+                                Text="{Binding Nombre}"
+                                VerticalOptions="Center" />
+                            <Label
+                                FontSize="16"
+                                Text="{Binding Cantidad}"
+                                VerticalOptions="Center" />
+                            <Label
+                                FontSize="16"
+                                Text="{Binding Intervalo}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Label
+            Margin="0,20,0,10"
+            FontSize="18"
+            Text="Historial de Consumo de Pastillas:" />
+        <ListView x:Name="lstHistorial" SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Spacing="5">
+                            <Label
+                                FontSize="16"
+                                Text="{Binding Fecha}"
+                                VerticalOptions="Center" />
+                            <Label
+                                FontSize="16"
+                                Text="{Binding PastillaConsumida}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

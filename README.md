@@ -12,4 +12,3 @@ App de Seguimiento de Salud
 - Diego Andre Aranda Reyes (2019063855)
   
 # Tecnologia: Maui, python, SupaBase, Docker , Github Actions, MVVM, CI/CD, AI, RESTFUL, XCODE
-
