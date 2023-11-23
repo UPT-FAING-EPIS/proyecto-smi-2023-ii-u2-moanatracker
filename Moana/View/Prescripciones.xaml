@@ -3,66 +3,76 @@
     x:Class="Moana.View.Prescripciones"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Prescripciones"
+    BackgroundColor="#EDF2F3"
+    NavigationPage.BackButtonTitle=""
+    NavigationPage.HasNavigationBar="False"
     Shell.NavBarIsVisible="False">
-    <StackLayout Margin="20">
-        <Label FontSize="18" Text="Nombre del Paciente: Juan" />
-        <Label x:Name="lblNombrePaciente" FontSize="16" />
+    <StackLayout>
+        <Frame
+            Margin="0,0,0,10"
+            Padding="5"
+            BackgroundColor="#EDF2F3"
+            BorderColor="Transparent"
+            HorizontalOptions="Start"
+            WidthRequest="130">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer
+                    x:Name="Back"
+                    NumberOfTapsRequired="1"
+                    Tapped="Back_Tapped" />
+            </Frame.GestureRecognizers>
+            <Grid ColumnDefinitions="Auto,Auto">
+                <ImageButton
+                    HeightRequest="15"
+                    HorizontalOptions="Start"
+                    Source="angulo_izquierdo.png"
+                    WidthRequest="25" />
+                <Label
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontFamily="OpenSansRegular"
+                    FontSize="18"
+                    Text="Back" />
+            </Grid>
+        </Frame>
+        <VerticalStackLayout Margin="20">
+            <Label
+                Margin="0,20,0,10"
+                FontSize="18"
+                Text="Lista de Prescripciones:" />
+            <CollectionView
+                x:Name="CitasCollectionView"
+                Margin="10"
+                ItemsSource="{Binding Prescripciones}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Margin="10"
+                            Padding="10"
+                            BackgroundColor="White"
+                            CornerRadius="10">
+                            <StackLayout Orientation="Vertical">
+                                <Label
+                                    FontSize="18"
+                                    Text="{Binding NombreMedicamento}"
+                                    TextColor="Black" />
 
-        <Label
-            Margin="0,20,0,10"
-            FontSize="18"
-            Text="Enfermedad: Gripe" />
-        <Label x:Name="txtEnfermedad" FontSize="16" />
-        <Label
-            Margin="0,20,0,10"
-            FontSize="18"
-            Text="Lista de Pastillas:" />
-        <ListView x:Name="lstPastillas" SeparatorVisibility="None">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Spacing="10">
-                            <Label
-                                FontSize="16"
-                                Text="{Binding Nombre}"
-                                VerticalOptions="Center" />
-                            <Label
-                                FontSize="16"
-                                Text="{Binding Cantidad}"
-                                VerticalOptions="Center" />
-                            <Label
-                                FontSize="16"
-                                Text="{Binding Intervalo}"
-                                VerticalOptions="Center" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Dosage}"
+                                    TextColor="Black" />
 
-        <Label
-            Margin="0,20,0,10"
-            FontSize="18"
-            Text="Historial de Consumo de Pastillas:" />
-        <ListView x:Name="lstHistorial" SeparatorVisibility="None">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Vertical" Spacing="5">
-                            <Label
-                                FontSize="16"
-                                Text="{Binding Fecha}"
-                                VerticalOptions="Center" />
-                            <Label
-                                FontSize="16"
-                                Text="{Binding PastillaConsumida}"
-                                VerticalOptions="Center" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Hora}"
+                                    TextColor="Black" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
     </StackLayout>
+
 
 </ContentPage>

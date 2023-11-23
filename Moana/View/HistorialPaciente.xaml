@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Moana.View.HistorialPaciente"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="HistorialPaciente"
+    BackgroundColor="#EDF2F3"
+    NavigationPage.BackButtonTitle=""
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
+
+    <StackLayout>
+        <Frame
+            Margin="0,0,0,10"
+            Padding="5"
+            BackgroundColor="#EDF2F3"
+            BorderColor="Transparent"
+            HorizontalOptions="Start"
+            WidthRequest="130">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer
+                    x:Name="Back"
+                    NumberOfTapsRequired="1"
+                    Tapped="Back_Tapped" />
+            </Frame.GestureRecognizers>
+            <Grid ColumnDefinitions="Auto,Auto">
+                <ImageButton
+                    HeightRequest="15"
+                    HorizontalOptions="Start"
+                    Source="angulo_izquierdo.png"
+                    WidthRequest="25" />
+                <Label
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontFamily="OpenSansRegular"
+                    FontSize="18"
+                    Text="Back" />
+            </Grid>
+        </Frame>
+        <StackLayout>
+            <Label
+                Margin="0,20,0,20"
+                FontSize="24"
+                HorizontalOptions="CenterAndExpand"
+                Text="Historial de Consumo" />
+
+            <CollectionView
+                x:Name="HistorialCollectionView"
+                ItemsSource="{Binding HistorialPaciente}"
+                VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Frame
+                                BackgroundColor="#EDEDED"
+                                BorderColor="#CCCCCC"
+                                CornerRadius="10"
+                                HasShadow="True">
+                                <StackLayout>
+                                    <Label
+                                        FontSize="18"
+                                        Text="{Binding NombreMedicamento}"
+                                        TextColor="#333333" />
+                                    <Label
+                                        FontSize="16"
+                                        Text="{Binding Dosage}"
+                                        TextColor="#666666" />
+                                    <Label
+                                        FontSize="14"
+                                        Text="{Binding FechaHoraTomada}"
+                                        TextColor="#999999" />
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

@@ -8,15 +8,12 @@ public partial class AdministrarCitas : ContentPage
 	{
 		InitializeComponent();
 
-        // Crear una lista de citas médicas de ejemplo
         var citasMedicas = new List<CitaMedica>
             {
                 new CitaMedica { Nombre = "Juan", Fecha = "15/02/2023", Hora = "5:00 pm" },
                 new CitaMedica { Nombre = "María", Fecha = "16/02/2023", Hora = "4:30 pm" },
-                // Agrega más citas médicas aquí
             };
 
-        // Asignar la lista como origen de datos para el ListView
         CitasCollectionView.ItemsSource = new ObservableCollection<CitaMedica>(citasMedicas);
     }
     public class CitaMedica
