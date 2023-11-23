@@ -19,7 +19,13 @@ public partial class UserHomePage : ContentPage
 
     private void user_Clicked(object sender, EventArgs e)
     {
+        Navigation.PushAsync(new UserConfig());
 
+    }
+
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        Navigation.PushAsync(new DetallePrescripcion());
     }
 }
 

@@ -25,7 +25,7 @@
             </Grid.RowDefinitions>
             <Label
                 Grid.Row="0"
-                Margin="10,50,0,20"
+                Margin="10,20,0,20"
                 FontFamily="OpenSansRegular"
                 FontSize="24"
                 HorizontalOptions="Start"

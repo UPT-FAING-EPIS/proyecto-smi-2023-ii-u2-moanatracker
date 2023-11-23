@@ -24,14 +24,14 @@ namespace Moana.View
                 new CarouselItem
                 {
                     Command =  PrescripcionesCommand,
-                    Text = "Ver prescripciones",
+                    Text = "Prescripciones",
                     ImageSource = "book_medical.svg"
                 },
                 new CarouselItem
                 {
                     Command = HorariosPastillasCommand,
-                    Text = "Ver horarios pastillas",
-                    ImageSource = "users_medical.svg"
+                    Text = "Historial de Consumo",
+                    ImageSource = "document.svg"
                 }                
             };
         }

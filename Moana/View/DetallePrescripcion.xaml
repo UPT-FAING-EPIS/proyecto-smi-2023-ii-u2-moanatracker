@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Moana.View.DetallePrescripcion"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="DetallePrescripcion"
+    BackgroundColor="#3498db"
+    NavigationPage.BackButtonTitle=""
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
+    <VerticalStackLayout>
+        <Frame
+            Margin="0,10,0,10"
+            Padding="5"
+            BackgroundColor="#3498db"
+            BorderColor="Transparent"
+            HorizontalOptions="Start"
+            WidthRequest="130">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer
+                    x:Name="Back"
+                    NumberOfTapsRequired="1"
+                    Tapped="Back_Tapped" />
+            </Frame.GestureRecognizers>
+            <Grid ColumnDefinitions="Auto,Auto">
+                <ImageButton
+                    HeightRequest="15"
+                    HorizontalOptions="Start"
+                    Source="angulo_izquierdo.svg"
+                    WidthRequest="25" />
+                <Label
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontFamily="OpenSansRegular"
+                    FontSize="18"
+                    Text="Back"
+                    TextColor="white" />
+            </Grid>
+        </Frame>
+        <Label
+            Margin="0,0,10,10"
+            FontAttributes="Bold"
+            FontSize="30"
+            HorizontalOptions="Center"
+            Text="Detalle de la dosis"
+            TextColor="white" />
+
+        <StackLayout
+            Padding="20,15,20,15"
+            BackgroundColor="#3498db"
+            Spacing="10">
+            <Label FontSize="18" TextColor="White">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Medicamento:         " />
+                        <Span
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Text="Paracetamol" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label
+                Margin="0,15,0,0"
+                FontSize="16"
+                Text="Tiempo restante:"
+                TextColor="White" />
+            <Label
+                Margin="15"
+                FontAttributes="Bold"
+                FontSize="30"
+                HorizontalOptions="Center"
+                Text="4 horas y 3 minutos"
+                TextColor="White" />
+            <Button
+                x:Name="TomarDosis"
+                BackgroundColor="#2ecc71"
+                Clicked="TomarDosis_Clicked"
+                CornerRadius="5"
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="Tomar Dosis"
+                TextColor="White" />
+        </StackLayout>
+
+
+    </VerticalStackLayout>
+</ContentPage>

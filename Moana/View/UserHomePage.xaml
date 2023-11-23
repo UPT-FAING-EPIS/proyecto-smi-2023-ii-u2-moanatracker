@@ -20,16 +20,51 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Label
                 Grid.Row="0"
-                Margin="10,50,0,20"
+                Margin="10,20,0,50"
                 FontFamily="OpenSansRegular"
                 FontSize="24"
                 HorizontalOptions="Start"
                 Text="{Binding Saludo}"
                 TextColor="Black" />
-            <VerticalStackLayout Grid.Row="1">
+
+            <Frame
+                Grid.Row="1"
+                Margin="0,0,0,20"
+                Padding="5"
+                BackgroundColor="#40bff2"
+                BorderColor="Transparent"
+                CornerRadius="20"
+                HeightRequest="160"
+                HorizontalOptions="Center"
+                MaximumHeightRequest="300"
+                MinimumHeightRequest="100"
+                VerticalOptions="CenterAndExpand">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Frame.GestureRecognizers>
+                <StackLayout>
+                    <Label
+                        Margin="0,5,0,10"
+                        Padding="10"
+                        FontAttributes="Bold"
+                        FontSize="25"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Proxima dosis de paracetamol en 1 hora"
+                        TextColor="White" />
+                    <Label
+                        Margin="0,10,10,10"
+                        HorizontalOptions="End"
+                        Text="Mas detalles"
+                        TextColor="White" />
+                </StackLayout>
+            </Frame>
+            <VerticalStackLayout Grid.Row="2" Margin="0,20,0,0">
                 <CarouselView IndicatorView="indicatorView" ItemsSource="{Binding CarouselItems}">
 
                     <CarouselView.ItemTemplate>
