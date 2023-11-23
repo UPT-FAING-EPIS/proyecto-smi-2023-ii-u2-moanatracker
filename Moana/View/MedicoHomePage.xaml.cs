@@ -1,5 +1,4 @@
 
-using static Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific.VisualElement;
 
 namespace Moana.View;
 
@@ -32,5 +31,13 @@ public partial class MedicoHomePage : ContentPage
     {
         DisplayAlert("User", "User", "OK");
 
+    }
+
+    private void ToolbarItem_Clicked(object sender, EventArgs e)
+    {
+        if (Parent is FlyoutPage flyoutPage)
+        {
+            flyoutPage.IsPresented = !flyoutPage.IsPresented;
+        }
     }
 }

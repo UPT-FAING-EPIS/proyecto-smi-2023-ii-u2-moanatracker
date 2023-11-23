@@ -9,26 +9,12 @@
     <Grid Padding="5" RowDefinitions="auto,*">
         <Grid Padding="0,10,0,0" ColumnDefinitions="*,4*,*,*">
             <ImageButton
-                x:Name="puerta"
-                Grid.Column="0"
-                Clicked="puerta_Clicked"
-                HeightRequest="25"
-                HorizontalOptions="Start"
-                Source="puerta_abierta.svg" />
-            <ImageButton
                 x:Name="user"
-                Grid.Column="2"
+                Grid.Column="3"
                 Clicked="user_Clicked"
-                HeightRequest="25"
+                HeightRequest="35"
                 HorizontalOptions="CenterAndExpand"
                 Source="circulo_usuario.svg" />
-            <ImageButton
-                x:Name="config"
-                Grid.Column="3"
-                Clicked="config_Clicked"
-                HeightRequest="25"
-                HorizontalOptions="End"
-                Source="ajustes.svg" />
         </Grid>
         <Grid Grid.Row="1" Padding="10">
             <Grid.RowDefinitions>

@@ -37,7 +37,8 @@ namespace Moana.View
                 var rolUser = user.Model.rolId.ToString();
                 var nameUser = user.Model.Name.ToString();
 
-                if (rolUser.Equals("2")){
+                if (rolUser.Equals("2"))
+                {
 
                     await Navigation.PushAsync(new MedicoHomePage(nameUser));
 
@@ -45,7 +46,8 @@ namespace Moana.View
 
 
                 }
-                else if (rolUser.Equals("4")){
+                else if (rolUser.Equals("4"))
+                {
 
                     await Navigation.PushAsync(new UserHomePage(nameUser));
 
@@ -53,9 +55,9 @@ namespace Moana.View
                 }
                 else
                 {
-                ResultLabel.Text = "Usuario no encontrado!";
+                    ResultLabel.Text = "Usuario no encontrado!";
 
-                }             
+                }
             }
             else
             {

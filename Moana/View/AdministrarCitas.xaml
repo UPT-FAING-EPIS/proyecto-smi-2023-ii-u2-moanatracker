@@ -18,7 +18,7 @@
             WidthRequest="130">
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer
-                    x:Name="Back"
+                    x:Name="Back"   
                     NumberOfTapsRequired="1"
                     Tapped="Back_Tapped" />
             </Frame.GestureRecognizers>

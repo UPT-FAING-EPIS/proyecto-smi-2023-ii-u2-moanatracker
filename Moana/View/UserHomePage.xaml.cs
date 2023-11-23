@@ -17,11 +17,6 @@ public partial class UserHomePage : ContentPage
 
     }
 
-    private void config_Clicked(object sender, EventArgs e)
-    {
-
-    }
-
     private void user_Clicked(object sender, EventArgs e)
     {
 
