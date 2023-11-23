@@ -3,26 +3,81 @@
     x:Class="Moana.View.UserConfig"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="UserConfig">
-    <VerticalStackLayout Padding="20" Spacing="20">
+    Title="UserConfig"
+    BackgroundColor="#EDF2F3"
+    NavigationPage.BackButtonTitle=""
+    NavigationPage.HasNavigationBar="False">
+    <VerticalStackLayout>
+        <Frame
+            Margin="0,10,0,10"
+            Padding="5"
+            BackgroundColor="#EDF2F3"
+            BorderColor="Transparent"
+            HorizontalOptions="Start"
+            WidthRequest="130">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer
+                    x:Name="Back"
+                    NumberOfTapsRequired="1"
+                    Tapped="Back_Tapped" />
+            </Frame.GestureRecognizers>
+            <Grid ColumnDefinitions="Auto,Auto">
+                <ImageButton
+                    HeightRequest="15"
+                    HorizontalOptions="Start"
+                    Source="angulo_izquierdo.png"
+                    WidthRequest="25" />
+                <Label
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontFamily="OpenSansRegular"
+                    FontSize="18"
+                    Text="Back" />
+            </Grid>
+        </Frame>
+        <VerticalStackLayout Padding="20" Spacing="20">
 
-        <Label
-            HorizontalOptions="CenterAndExpand"
-            Text="Perfil"
-            VerticalOptions="CenterAndExpand" />
+            <Label
+                FontAttributes="Bold"
+                FontSize="30"
+                HorizontalOptions="CenterAndExpand"
+                Text="Perfil"
+                VerticalOptions="CenterAndExpand" />
 
-        <Button
-            BackgroundColor="Red"
-            Command="{Binding LogoutCommand}"
-            HorizontalOptions="FillAndExpand"
-            Text="Salir"
-            VerticalOptions="EndAndExpand">
+            <Frame
+                Padding="0"
+                BackgroundColor="IndianRed"
+                BorderColor="Transparent"
+                CornerRadius="25"
+                HeightRequest="50">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+                </Frame.GestureRecognizers>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Margin="80,0,0,0"
+                        HeightRequest="30"
+                        HorizontalOptions="Start"
+                        Source="puerta_abierta.svg" />
 
-            <Button.ImageSource>
-                <FileImageSource File="puerta_abierta.png" />
-            </Button.ImageSource>
+                    <Label
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        HorizontalOptions="Center"
+                        Text="SALIR"
+                        TextColor="white"
+                        VerticalTextAlignment="Center" />
+                </Grid>
+            </Frame>
 
-        </Button>
 
+        </VerticalStackLayout>
     </VerticalStackLayout>
+
+
 </ContentPage>
