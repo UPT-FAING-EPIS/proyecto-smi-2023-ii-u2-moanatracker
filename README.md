@@ -11,4 +11,4 @@ App de Seguimiento de Salud
 - Helbert Andres Condori Loayza (2020067571) ​
 - Diego Andre Aranda Reyes (2019063855)
   
-# Tecnologia: Maui, python, SupaBase, Docker , Github Actions, MVVM, CI/CD, AI, RESTFUL, XCODE
+## Tecnologia: Maui, python, SupaBase, Docker , Github Actions, MVVM, CI/CD, AI, RESTFUL, XCODE
