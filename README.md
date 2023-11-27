@@ -1,4 +1,4 @@
-# PROYECTO DE UNIDAD I - MOANA TRACKER-
+# PROYECTO DE UNIDAD I - MOANA TRACKER
 
 # Idea:
 App de Seguimiento de Salud
