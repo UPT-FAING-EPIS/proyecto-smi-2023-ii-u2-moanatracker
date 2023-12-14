@@ -1,8 +1,8 @@
 namespace Moana.View;
 
-public partial class AdministrarPrescripciones : ContentPage
+public partial class AdministrarRecetas : ContentPage
 {
-	public AdministrarPrescripciones()
+	public AdministrarRecetas()
 	{
 		InitializeComponent();
 	}
@@ -13,9 +13,9 @@ public partial class AdministrarPrescripciones : ContentPage
 
     }
 
-    async private void NewPrescription_Tapped(object sender, TappedEventArgs e)
+    async private void NewReceta_Tapped(object sender, TappedEventArgs e)
     {
-        await Navigation.PushAsync(new NuevaPrescripcion());
+        await Navigation.PushAsync(new NuevaReceta());
 
     }
 

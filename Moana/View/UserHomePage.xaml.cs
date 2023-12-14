@@ -25,7 +25,7 @@ public partial class UserHomePage : ContentPage
 
     private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
-        Navigation.PushAsync(new DetallePrescripcion());
+        Navigation.PushAsync(new DetalleReceta());
     }
 }
 

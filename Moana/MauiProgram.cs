@@ -21,6 +21,7 @@ namespace Moana
             builder.Services.AddSingleton(supabaseClient);
             builder.Services.AddTransient<AuthenticationService>();
             builder.Services.AddTransient<UserService>();
+            builder.Services.AddTransient<PrescripcionService>();
             builder.Services.AddTransient<LoginPage>();
 
             // TODO: Register this client instance with your dependency injection container if you have one. 

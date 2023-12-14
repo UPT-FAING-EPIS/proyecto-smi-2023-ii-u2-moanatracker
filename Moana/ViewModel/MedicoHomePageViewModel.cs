@@ -17,7 +17,7 @@ namespace Moana.View
         {
             AdministrarCitasCommand = new Command(AdministrarCitas);
             ListadoPacientesCommand = new Command(ListadoPacientes);
-            AdministrarPrescripCommand = new Command(AdministrarPrescripciones);
+            AdministrarPrescripCommand = new Command(AdministrarRecetas);
             CarouselItems = new ObservableCollection<CarouselItem>
             {
                 new CarouselItem
@@ -35,7 +35,7 @@ namespace Moana.View
                 new CarouselItem
                 {
                     Command = AdministrarPrescripCommand,
-                    Text = "Administrar Prescripciones",
+                    Text = "Administrar Recetas",
                     ImageSource = "clipboard_list_check.svg"
                 }
             };
@@ -91,9 +91,9 @@ namespace Moana.View
             await Application.Current.MainPage.Navigation.PushAsync(new ListadoPacientes());
         }
 
-        private async void AdministrarPrescripciones()
+        private async void AdministrarRecetas()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new AdministrarPrescripciones());
+            await Application.Current.MainPage.Navigation.PushAsync(new AdministrarRecetas());
         }
     }
 }

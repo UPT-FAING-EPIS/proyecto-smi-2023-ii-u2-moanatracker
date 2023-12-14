@@ -10,6 +10,8 @@ namespace Moana
     public interface IPrescripcionService
     {
         Task<List<Prescripcion>> GetPrescripciones();
+        Task<List<Prescripcion>> GetPrescripcionesById(string idPaciente);
+
         Task<(bool success, string errorMessage)> CreatePrescripcion(string fechaInicio, string fechaFin, string fkIdMedico, string fkIdPaciente);
     }
 
@@ -27,9 +29,8 @@ namespace Moana
             try
             {
                 var prescripciones = await _supabase
-                    .From<Prescripcion>()
-                    .Select("id, Fecha_inicio, Fecha_fin, fkIdMedico, fkIdPaciente")
-                    .Get();
+                .From<Prescripcion>()
+                .Get();
                 return prescripciones.Models;
             }
             catch (Exception ex)
@@ -65,6 +66,25 @@ namespace Moana
             {
                 Console.WriteLine("Error en la creación de la prescripción: " + ex.Message);
                 return (false, ex.Message);
+            }
+        }
+
+        public async Task<List<Prescripcion>> GetPrescripcionesById(string idPaciente)
+        {
+            try
+            {
+                var prescripciones = await _supabase
+                    .From<Prescripcion>()
+                    .Select("id, Fecha_inicio, Fecha_fin, fkIdMedico, fkIdPaciente")
+                    .Where(x => x.fkIdPaciente == idPaciente)
+                    .Get();
+
+                return prescripciones.Models;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener prescripciones: " + ex.Message);
+                return new List<Prescripcion>();
             }
         }
     }

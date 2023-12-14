@@ -2,10 +2,10 @@ using Supabase;
 
 namespace Moana.View;
 
-public partial class NuevaPrescripcion : ContentPage
+public partial class NuevaReceta : ContentPage
 {
     private readonly Client _supabaseClient;
-    public NuevaPrescripcion()
+    public NuevaReceta()
 	{
         InitializeComponent();
         _supabaseClient = MauiProgram.CreateMauiApp().Services.GetRequiredService<Client>();
@@ -23,13 +23,11 @@ public partial class NuevaPrescripcion : ContentPage
 
         if (success)
         {
-            await Navigation.PushAsync(new RecomendacionIA());
+            await DisplayAlert("Create user ", "", "OK");
         }
         else
         {
-            await Navigation.PushAsync(new RecomendacionIA());
-
-            // await DisplayAlert("Error", errorMessage, "OK");
+             await DisplayAlert("not work", "not work", "OK");
         }
     }
 

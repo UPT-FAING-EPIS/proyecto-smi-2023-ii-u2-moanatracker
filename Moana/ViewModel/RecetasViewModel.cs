@@ -1,10 +1,13 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using Supabase;
+using Supabase.Interfaces;
 
 namespace Moana.View;
 
 public class PrescripcionItem : INotifyPropertyChanged
 {
+    
     private string _nombreMedicamento;
     public string NombreMedicamento
     {
@@ -55,7 +58,7 @@ public class PrescripcionItem : INotifyPropertyChanged
     }
 }
 
-public class PrescripcionesViewModel : INotifyPropertyChanged
+public class RecetasViewModel : INotifyPropertyChanged
 {
     private ObservableCollection<PrescripcionItem> _prescripciones;
 
@@ -71,14 +74,45 @@ public class PrescripcionesViewModel : INotifyPropertyChanged
             }
         }
     }
-
-    public PrescripcionesViewModel()
+    private readonly Client _supabaseClient;
+    public RecetasViewModel()
     {
+        _supabaseClient = MauiProgram.CreateMauiApp().Services.GetRequiredService<Client>();
         Prescripciones = new ObservableCollection<PrescripcionItem>
         {
             new PrescripcionItem { NombreMedicamento = "Paracetamol", Dosage = "500mg", Hora = "En 8 horas" },
             new PrescripcionItem { NombreMedicamento = "Ibuprofeno", Dosage = "200mg", Hora = "En 1 hora" },
         };
+        LoadPrescriptions();
+    }
+    public async void LoadPrescriptions()
+    {
+        try
+        {
+            Console.WriteLine("LoadPrescriptions method called");
+
+            var test = "1";
+            var prescripService = new PrescripcionService(_supabaseClient);
+            var patientsList = await prescripService.GetPrescripcionesById(test);
+
+            Console.WriteLine($"Number of Prescriptions: {patientsList.Count}");
+
+            foreach (var patient in patientsList)
+            {
+                Console.WriteLine($"Prescripcion ID: {patient.Id}");
+                Console.WriteLine($"Fecha Inicio: {patient.Fecha_inicio}");
+                Console.WriteLine($"Fecha Fin: {patient.Fecha_fin}");
+                Console.WriteLine($"Medico ID: {patient.fkIdMedico}");
+                Console.WriteLine($"Paciente ID: {patient.fkIdPaciente}");
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("After loop");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error al obtener prescripciones: " + ex.Message);
+        }
     }
 
     public event PropertyChangedEventHandler PropertyChanged;

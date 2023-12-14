@@ -4,16 +4,18 @@ using System;
 using System.Threading.Tasks;
 using Moana.Models;
 using System.Net;
+using static Postgrest.Constants;
+using Newtonsoft.Json;
 
 namespace Moana
 {
     public interface IPacienteService
     {
+        Task<List<Receta>> GetPacientesbyMedico(int IdMedico);
         Task<List<Paciente>> GetPacientes();
-        Task<(bool success, string errorMessage)> CreatePaciente(string nombre, string apellido, string fkidUsuario);
+
+        Task<(bool success, string errorMessage)> CreatePaciente(string nombre, string apellido, int fkidUsuario);
     }
-
-
     
     public class PacienteService : IPacienteService
     {
@@ -23,32 +25,81 @@ namespace Moana
         {
             _supabase = supabase ?? throw new ArgumentNullException(nameof(supabase));
         }
-
-        public async Task<List<Paciente>> GetPacientes()
+        public async Task<Paciente> GetPatientsbyIdUser(int IdUser)
         {
             try
             {
-                var pacientes = await _supabase
+                var patients = await _supabase
                     .From<Paciente>()
-                    .Select("nombre,apellido")
+                    .Select("IdPaciente")
+                    .Where(x => x.FkIdUsuario == IdUser)
                     .Get();
-                return pacientes.Models;
+
+                Console.WriteLine($"Supabase response: {JsonConvert.SerializeObject(patients)}"); 
+                Console.WriteLine($"Supabase response: {patients.Model}"); 
+
+                return patients.Model;
             }
-            catch
+            catch (Exception ex)
             {
-                return new List<Paciente>();
+                Console.WriteLine($"Error in GetPatientsbyIdUser: {ex.Message}");
+                return new Paciente();
             }
         }
 
-        public async Task<(bool success, string errorMessage)> CreatePaciente(string nombre, string apellido, string fkidUsuario)
+        public async Task<List<Receta>> GetPacientesbyMedico(int IdMedico)
+        {
+            try
+            {
+                Console.WriteLine("Iniciando");
+
+                var responseRecetas = await _supabase
+                    .From<Receta>()
+                    .Select("*")
+                    .Where(x => x.IdMedico == IdMedico)
+                    .Get();
+
+                var recetas = responseRecetas.Models;
+
+                var responsePacientes = await _supabase
+                    .From<Paciente>()
+                    .Select("*")
+                    .Get();
+
+                var pacientes = responsePacientes.Models;
+
+                foreach (var receta in recetas)
+                {
+                    var pacienteParaAgregar = pacientes.FirstOrDefault(p => p.IdPaciente == receta.IdPaciente);
+
+                    if (pacienteParaAgregar != null)
+                    {
+                        receta.Paciente = pacienteParaAgregar;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Paciente no encontrado o no válido");
+                    }
+                }
+
+                return recetas;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task<(bool success, string errorMessage)> CreatePaciente(string nombre, string apellido, int fkidUsuario)
         {
             try
             {
                 var paciente = new Paciente
                 {
-                    nombre = nombre,
-                    apellido = apellido,
-                    fkidUsuario = fkidUsuario,
+                    Nombre = nombre,
+                    Apellido = apellido,
+                    FkIdUsuario = fkidUsuario,
                 };
                 var insertResult = await _supabase
                     .From<Paciente>()
@@ -67,6 +118,22 @@ namespace Moana
             {
                 Console.WriteLine("Error en la creación de paciente: " + ex.Message);
                 return (false, ex.Message);
+            }
+        }
+
+        public async Task<List<Paciente>> GetPacientes()
+        {
+            try
+            {
+                var pacientes = await _supabase
+                    .From<Paciente>()
+                    .Select("*")
+                    .Get();
+                return pacientes.Models;
+            }
+            catch
+            {
+                return new List<Paciente>();
             }
         }
     }

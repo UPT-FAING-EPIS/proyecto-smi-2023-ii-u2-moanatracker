@@ -9,7 +9,7 @@ namespace Moana
         {
             InitializeComponent();
             var erick = "erick";
-            MainPage = new NavigationPage(new UserHomePage(erick));
+            MainPage = new NavigationPage(new MedicoHomePage(erick));
 
         }
     }

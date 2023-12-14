@@ -2,9 +2,7 @@ using Postgrest.Attributes;
 using Postgrest.Models;
 namespace Moana.Models;
 
-
 [Table("Prescripcion")]
-
 public class Prescripcion : BaseModel
 {
     [PrimaryKey("id")]

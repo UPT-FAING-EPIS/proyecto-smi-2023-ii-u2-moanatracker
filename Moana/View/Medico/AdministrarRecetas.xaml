@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Moana.View.AdministrarPrescripciones"
+    x:Class="Moana.View.AdministrarRecetas"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="AdministrarPrescripciones"
+    Title="AdministrarRecetas"
     BackgroundColor="#EDF2F3"
     NavigationPage.BackButtonTitle=""
     NavigationPage.HasNavigationBar="False"
@@ -27,7 +27,7 @@
                     <ImageButton
                         HeightRequest="15"
                         HorizontalOptions="Start"
-                        Source="angulo_izquierdo.png"
+                        Source="angulo_izquierdo_black.svg"
                         WidthRequest="25" />
                     <Label
                         Grid.Column="1"
@@ -54,9 +54,9 @@
                     WidthRequest="260">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer
-                            x:Name="NewPrescription"
+                            x:Name="NewReceta"
                             NumberOfTapsRequired="1"
-                            Tapped="NewPrescription_Tapped" />
+                            Tapped="NewReceta_Tapped" />
                     </Frame.GestureRecognizers>
                     <StackLayout>
 
@@ -64,7 +64,7 @@
                             Margin="0,5,0,10"
                             FontSize="18"
                             HorizontalOptions="CenterAndExpand"
-                            Text="Nueva prescripcion"
+                            Text="Nueva Receta"
                             TextColor="White" />
                         <Image
                             HeightRequest="100"

@@ -101,46 +101,61 @@
 	  <Compile Update="View\MainPageView.xaml.cs">
 	    <DependentUpon>MainPageView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="View\Medico\AdministrarRecetas.xaml.cs">
+	    <DependentUpon>AdministrarRecetas.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Medico\NuevaReceta.xaml.cs">
+	    <DependentUpon>NuevaReceta.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Paciente\Indicacion.xaml.cs">
+	    <DependentUpon>Indicacion.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\Paciente\ListadoRecetas.xaml.cs">
+	    <DependentUpon>ListadoRecetas.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="MedicoShell.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\AdministrarCitas.xaml">
+	  <MauiXaml Update="View\Medico\AdministrarCitas.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\AdministrarPrescripciones.xaml">
+	  <MauiXaml Update="View\Medico\AdministrarRecetas.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\DetallePaciente.xaml">
+	  <MauiXaml Update="View\Medico\DetallePaciente.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\DetallePrescripcion.xaml">
+	  <MauiXaml Update="View\Medico\ListadoRecetasMedico.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\HistorialPaciente.xaml">
+	  <MauiXaml Update="View\Paciente\DetalleReceta.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Paciente\Indicacion.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Paciente\HistorialPaciente.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\MedicoHomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\HorarioPastillas.xaml">
+	  <MauiXaml Update="View\Medico\HorarioPastillas.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\ListadoPacientes.xaml">
+	  <MauiXaml Update="View\Medico\ListadoPacientes.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\NuevaPrescripcion.xaml">
+	  <MauiXaml Update="View\Medico\NuevaReceta.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Prescripciones.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="View\RecomendacionIA.xaml">
+	  <MauiXaml Update="View\Paciente\ListadoRecetas.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\UserConfig.xaml">

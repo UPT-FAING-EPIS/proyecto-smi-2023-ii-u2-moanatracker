@@ -10,20 +10,20 @@ namespace Moana.View
 {
     public class UserHomePageViewModel : BindableObject
     {
-        public ICommand PrescripcionesCommand { get; private set; }
+        public ICommand RecetasCommand { get; private set; }
         public ICommand HistorialPastillas { get; private set; }
         public ObservableCollection<CarouselItem> CarouselItems { get; private set; }
 
         private string nameUser;
         public UserHomePageViewModel()
         {
-            PrescripcionesCommand = new Command(Prescripciones);
+            RecetasCommand = new Command(Prescripciones);
             HistorialPastillas = new Command(HorariosPastillas);
             CarouselItems = new ObservableCollection<CarouselItem>
             {
                 new CarouselItem
                 {
-                    Command =  PrescripcionesCommand,
+                    Command =  RecetasCommand,
                     Text = "Prescripciones",
                     ImageSource = "book_medical.svg"
                 },
@@ -77,7 +77,7 @@ namespace Moana.View
 
         private async void Prescripciones()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new Prescripciones());
+            await Application.Current.MainPage.Navigation.PushAsync(new ListadoRecetas());
         }
 
         private async void HorariosPastillas()

@@ -35,7 +35,7 @@
                 <ImageButton
                     HeightRequest="15"
                     HorizontalOptions="Start"
-                    Source="angulo_izquierdo.png"
+                    Source="angulo_izquierdo_black.svg"
                     WidthRequest="25" />
                 <Label
                     Grid.Column="1"
@@ -87,7 +87,7 @@
                                         FontAttributes="Bold"
                                         HorizontalOptions="Center"
                                         HorizontalTextAlignment="Center"
-                                        Text="{Binding Name}" />
+                                        Text="{Binding Paciente.NombreCompleto}" />
                                 </StackLayout>
                             </SwipeView>
                         </ViewCell>

@@ -17,7 +17,7 @@
         Route="ListadoPacientes" />
 
     <ShellContent
-        Title="Prescripciones"
-        ContentTemplate="{DataTemplate view:Prescripciones}"
-        Route="Prescripciones" />
+        Title="AdministrarRecetas"
+        ContentTemplate="{DataTemplate view:AdministrarRecetas}"
+        Route="AdministrarRecetas" />
 </Shell>

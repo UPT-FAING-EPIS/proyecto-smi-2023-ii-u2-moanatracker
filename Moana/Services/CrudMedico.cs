@@ -10,7 +10,7 @@ namespace Moana
     public interface IMedicoService
     {
         Task<List<Medico>> GetMedicos();
-        Task<(bool success, string errorMessage)> CreateMedico(string nombre, string apellido, string fkidUsuario, string direccion, string contacto, string fkIdEspecialidad);
+        Task<(bool success, string errorMessage)> CreateMedico(string nombre, string apellido, int fkidUsuario, string direccion, string contacto, int fkIdEspecialidad);
         
     
     
@@ -42,14 +42,14 @@ namespace Moana
             }
         }
 
-        public async Task<(bool success, string errorMessage)> CreateMedico(string nombre, string apellido, string fkidUsuario, string direccion, string contacto, string fkIdEspecialidad)
+        public async Task<(bool success, string errorMessage)> CreateMedico(string nombre, string apellido, int fkidUsuario, string direccion, string contacto, int fkIdEspecialidad)
         {
             try
             {
                 var medico = new Medico
                 {
-                    nombre = nombre,
-                    apellido = apellido,
+                    Nombre = nombre,
+                    Apellido = apellido,
                     Direccion = direccion,
                     Contacto = contacto,
                     FkIdEspecialidad = fkIdEspecialidad,

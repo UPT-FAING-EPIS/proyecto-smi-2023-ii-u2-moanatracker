@@ -1,9 +1,9 @@
 
 namespace Moana.View;
 
-public partial class DetallePrescripcion : ContentPage
+public partial class DetalleReceta : ContentPage
 {
-	public DetallePrescripcion()
+	public DetalleReceta()
 	{
 		InitializeComponent();
 	}

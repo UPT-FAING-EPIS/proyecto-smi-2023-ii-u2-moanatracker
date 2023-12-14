@@ -11,7 +11,7 @@ namespace Moana.View
     {
         private readonly Client _supabaseClient;
 
-        private ObservableCollection<User> patients;
+        private ObservableCollection<Moana.Models.Receta> patients;
         private User selectedPatient;
         private bool isRefreshing;
 
@@ -22,7 +22,7 @@ namespace Moana.View
             LoadPatients();
         }
 
-        public ObservableCollection<User> Patients
+        public ObservableCollection<Moana.Models.Receta> Patients
         {
             get => patients;
             set
@@ -72,26 +72,33 @@ namespace Moana.View
 
         private async Task ReloadPatients()
         {
-            var userService = new UserService(_supabaseClient);
-            var patientsList = await userService.GetPatients();
+            var pacienteService = new PacienteService(_supabaseClient);
+            var recetasList = await pacienteService.GetPacientesbyMedico(1);
             Patients.Clear();
-            foreach (var patient in patientsList)
-            {
-                Patients.Add(patient);
-            }
+            Patients = new ObservableCollection<Moana.Models.Receta>(recetasList);
         }
 
         private async void LoadPatients()
         {
-            var userService = new UserService(_supabaseClient);
-            var patientsList = await userService.GetPatients();
-            Patients = new ObservableCollection<User>(patientsList);
+            try
+            {
+
+                var pacienteService = new PacienteService(_supabaseClient);
+                var recetasList = await pacienteService.GetPacientesbyMedico(1);
+
+                Patients = new ObservableCollection<Moana.Models.Receta>(recetasList);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
         }
 
         private void OnAddPatientClicked()
         {
             var newPatient = new User { Name = "Nuevo Paciente" };
-            Patients.Add(newPatient);
+            //Patients.Add(newPatient);
         }
 
         private async void OnShowPatientDetails()
