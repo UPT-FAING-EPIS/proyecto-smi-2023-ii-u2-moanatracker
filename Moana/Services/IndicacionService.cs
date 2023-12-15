@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Moana.Models;
 
+
 namespace Moana.Services
 {
     public interface IIndicacionService
     {
-        Task<List<Indicacion>> GetIndicaciones();
+        Task<Indicacion> GetIndicaciones();
 
 
     }
@@ -24,20 +25,21 @@ namespace Moana.Services
 
         }
 
-        public async Task<List<Indicacion>> GetIndicaciones()
+        public async Task<Indicacion> GetIndicacionesbyid(int IdIndicacion )
         {
             try
             {
                 var indicaciones = await _supabase
                     .From<Indicacion>()
                     .Select("*")
+                    .Where(x => x.IdIndicacion == IdIndicacion)
                     .Get();
                 return indicaciones.Models;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error al obtener médicos: " + ex.Message);
-                return new List<Indicacion>();
+                return new Indicacion();
             }
         }
     }

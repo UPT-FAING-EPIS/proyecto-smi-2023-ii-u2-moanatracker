@@ -31,16 +31,13 @@ public partial class DetalleReceta : ContentPage
         IndicacionService IndicacionService = new IndicacionService(_supabaseClient);
 
 
-        var Indicacion = IndicacionService.GetIndicaciones();
+        var indicacion = IndicacionService.GetIndicacionesbyid(1);
 
 
 
-        int Intervalo_horas_que_debe_tomar = 1;
-        int IdMedicamento = 1;
-        int Cantidad_de_veces_a_tomar = 1;
-
-
-        int Dias_que_debe_tomar = Intervalo_horas_que_debe_tomar * Cantidad_de_veces_a_tomar + 1;
+        int Intervalo_horas_que_debe_tomar = indicacion.Frecuencia;
+        int IdMedicamento = indicacion.IdDetalleReceta;
+        int Dias_que_debe_tomar = indicacion.Duracion;
 
 
 
@@ -58,7 +55,7 @@ public partial class DetalleReceta : ContentPage
             {
                 NotifyTime = DateTime.Now.AddHours(Intervalo_horas_que_debe_tomar),
                 NotifyRepeatInterval = TimeSpan.FromHours(Intervalo_horas_que_debe_tomar),
-                NotifyAutoCancelTime = DateTime.Now.AddHours(Dias_que_debe_tomar),
+                NotifyAutoCancelTime = DateTime.Now.AddDays(Dias_que_debe_tomar),
 
             },
             Android = new AndroidOptions
