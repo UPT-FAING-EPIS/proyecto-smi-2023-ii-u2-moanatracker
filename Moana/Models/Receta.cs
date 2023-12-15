@@ -33,6 +33,10 @@ namespace Moana.Models
         [Column("IdMedico")]
         public int IdMedico { get; set; }
 
+
+    }
+    public class RecetaCompleta : Receta
+    {
         public Medico Medico { get; set; }
 
         public Paciente Paciente { get; set; }

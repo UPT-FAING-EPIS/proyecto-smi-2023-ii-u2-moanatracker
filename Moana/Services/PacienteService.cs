@@ -11,7 +11,7 @@ namespace Moana
 {
     public interface IPacienteService
     {
-        Task<List<Receta>> GetPacientesbyMedico(int IdMedico);
+        Task<List<RecetaCompleta>> GetPacientesbyMedico(int IdMedico);
         Task<List<Paciente>> GetPacientes();
 
         Task<(bool success, string errorMessage)> CreatePaciente(string nombre, string apellido, int fkidUsuario);
@@ -44,12 +44,12 @@ namespace Moana
             }
         }
 
-        public async Task<List<Receta>> GetPacientesbyMedico(int IdMedico)
+        public async Task<List<RecetaCompleta>> GetPacientesbyMedico(int IdMedico)
         {
             try
             {
                 var responseRecetas = await _supabase
-                    .From<Receta>()
+                    .From<RecetaCompleta>()
                     .Select("*")
                     .Where(x => x.IdMedico == IdMedico)
                     .Get();
