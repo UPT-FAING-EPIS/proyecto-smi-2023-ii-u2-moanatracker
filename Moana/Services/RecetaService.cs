@@ -59,12 +59,12 @@ namespace Moana
                 throw;
             }
         }
-        public async Task<List<Receta>> GetRecetasbyMedico(int IdMedico)
+        public async Task<List<RecetaCompleta>> GetRecetasbyMedico(int IdMedico)
         {
             try
             {
                 var responseRecetas = await _supabase
-                    .From<Receta>()
+                    .From<RecetaCompleta>()
                     .Select("*")
                     .Where(x => x.IdMedico == IdMedico)
                     .Get();
