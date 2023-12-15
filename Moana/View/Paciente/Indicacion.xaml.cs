@@ -30,19 +30,12 @@ public partial class DetalleReceta : ContentPage
 
         IndicacionService IndicacionService = new IndicacionService(_supabaseClient);
 
-
         var indicacion = IndicacionService.GetIndicacionesbyid(1);
-
-
 
         int Intervalo_horas_que_debe_tomar = indicacion.Frecuencia;
         int IdMedicamento = indicacion.IdDetalleReceta;
         int Dias_que_debe_tomar = indicacion.Duracion;
-
-
-
-
-
+        
         var request = new NotificationRequest
         {
             NotificationId = IdMedicamento,
