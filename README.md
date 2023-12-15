@@ -19,3 +19,5 @@ App de Seguimiento de Salud
 ![image](https://github.com/UPT-FAING-EPIS/proyecto-smi-2023-ii-u2-moanatracker/assets/102819429/27bc01f3-904d-49a2-a774-7a18f61a0de7)
 
 ![image](https://github.com/UPT-FAING-EPIS/proyecto-smi-2023-ii-u2-moanatracker/assets/102819429/84187667-7a4e-434f-8a02-a9a40bad3854)
+Link del drive :
+https://drive.google.com/drive/folders/1QdFxOSEX1vE0k09Evg2tZ6GLJ4aJuuRD?usp=sharing
