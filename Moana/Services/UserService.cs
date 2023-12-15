@@ -1,16 +1,14 @@
-﻿using Supabase;
-using Supabase.Storage.Exceptions;
-using System;
-using System.Threading.Tasks;
+﻿
 using Moana.Models;
-using System.Net;
 
 namespace Moana
 {
     public interface IUserService
     {
-        Task<Postgrest.Responses.ModeledResponse<Moana.Models.User>> GetUser(string email);
-        Task<List<User>> GetPatients();
+        Task<User> GetUser(string email);
+        Task<List<Paciente>> GetPatients();
+        Task<Paciente> GetIdPaciente(int IdUser);
+        Task<Medico> GetIdMedico(int IdUser);
         Task<(bool success, string errorMessage)> CreateUser(string email, string password, string name);
     }
 
@@ -23,24 +21,64 @@ namespace Moana
             _supabase = supabase ?? throw new ArgumentNullException(nameof(supabase));
         }
 
-        public async Task<Postgrest.Responses.ModeledResponse<Moana.Models.User>> GetUser(string email)
+        public async Task<User> GetUser(string email)
+        {
+            var user = await _supabase
+                   .From<User>()
+                   .Select("id,name,rolid")
+                   .Where(x => x.Email == email)
+                   .Get();
+            User usuario = user.Model;
+            return usuario;
+        }
+        public async Task<Paciente> GetIdPaciente(int IdUser)
         {
             try
             {
-                var user = await _supabase
-                    .From<User>()
-                    .Select("name,rolid")
-                    .Where(x => x.Email == email)
+                var patients = await _supabase
+                    .From<Paciente>()
+                    .Select("IdPaciente")
+                    .Where(x => x.FkIdUsuario == IdUser)
                     .Get();
-                return user;
-
+                return patients.Model;
+            }
+            catch
+            {
+                return new Paciente();
+            }
+        }
+        public async Task<Medico> GetIdMedico(int IdUser)
+        {
+            try
+            {
+                var patients = await _supabase
+                    .From<Medico>()
+                    .Select("IdMedico")
+                    .Where(x => x.FkIdUsuario == IdUser)
+                    .Get();
+                return patients.Model;
+            }
+            catch
+            {
+                return new Medico();
+            }
+        }
+        public async Task<List<Paciente>> GetPatients()
+        {
+            try
+            {
+                var patients = await _supabase
+                    .From<Paciente>()
+                    .Select("*")
+                    .Get();
+                return patients.Models;
             }
             catch
             {
                 return null;
             }
         }
-        public async Task<List<User>> GetPatients()
+        public async Task<List<User>> GetIdPaciente()
         {
             try
             {
@@ -51,9 +89,10 @@ namespace Moana
                     .Get();
                 return patients.Models;
             }
-            catch
+            catch(Exception e)
             {
-                return new List<User>();
+                Console.WriteLine(e.ToString());
+                return null;
             }
         }
 
@@ -102,7 +141,7 @@ namespace Moana
                 Console.WriteLine("Error en la creación de usuario: " + ex.Message);
                 return (false, ex.Message);
             }
-        }      
+        }
 
     }
 }

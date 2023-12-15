@@ -33,10 +33,8 @@ namespace Moana.Models
         [Column("IdMedico")]
         public int IdMedico { get; set; }
 
-        [Column("Medico")]
         public Medico Medico { get; set; }
 
-        [Column("Paciente")]
         public Paciente Paciente { get; set; }
     }
 }

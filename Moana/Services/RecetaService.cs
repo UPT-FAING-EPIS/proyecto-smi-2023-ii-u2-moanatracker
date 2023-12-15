@@ -1,18 +1,11 @@
 ﻿using Moana.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Postgrest.Constants;
+
 
 namespace Moana
 {
     public interface IRecetaService
     {
         Task<List<Receta>> GetRecetas();
-        Task<List<Receta>> GetRecetasByPrescripcionId(string idPaciente);
-
     }
 
     public class RecetaService : IRecetaService
@@ -40,23 +33,92 @@ namespace Moana
                 return new List<Receta>();
             }
         }
-
-        public async Task<List<Receta>> GetRecetasByPrescripcionId(string idPaciente)
+        public async Task<Receta> CreateReceta(Receta receta)
         {
             try
             {
-                var recetas = await _supabase
+                Receta recetamedica = receta;
+                // Mostrar valores usando Console.WriteLine
+                Console.WriteLine($"IdReceta: {recetamedica.IdReceta}");
+                Console.WriteLine($"IdPaciente: {recetamedica.IdPaciente}");
+                Console.WriteLine($"FechaCreacion: {recetamedica.FechaCreacion}");
+                Console.WriteLine($"ValidoHasta: {recetamedica.ValidoHasta}");
+                Console.WriteLine($"EstadoReceta: {recetamedica.EstadoReceta}");
+                Console.WriteLine($"TipoAtencion: {recetamedica.TipoAtencion}");
+                Console.WriteLine($"CIE10: {recetamedica.CIE10}");
+                Console.WriteLine($"Diagnostico: {recetamedica.Diagnostico}");
+                Console.WriteLine($"IdMedico: {recetamedica.IdMedico}");    
+                var recetacreada =  await _supabase.From<Receta>().Insert(recetamedica);
+
+                Console.WriteLine(recetacreada.Model.IdReceta);
+                return recetacreada.Model;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine($"Error creating receta: {e.Message}");
+                throw;
+            }
+        }
+        public async Task<List<Receta>> GetRecetasbyMedico(int IdMedico)
+        {
+            try
+            {
+                var responseRecetas = await _supabase
                     .From<Receta>()
-                    .Select("id, CantidadConsumida, HoraTomar, FechaInicioTratamiento, FechaFinalTratamiento, FkIdPrescripcion, IntervaloConsumo")
-                    .Filter("prescripcion.fkIdPaciente", Operator.Equals, idPaciente)
+                    .Select("*")
+                    .Where(x => x.IdMedico == IdMedico)
                     .Get();
 
-                return recetas.Models;
+                var recetas = responseRecetas.Models;
+
+                var idPacientes = recetas.Select(r => r.IdPaciente).ToList();
+
+                var responsePacientes = await _supabase
+                    .From<Paciente>()
+                    .Select("*")
+                    .Get();
+
+                var pacientes = responsePacientes.Models.ToDictionary(p => p.IdPaciente);
+
+                foreach (var receta in recetas)
+                {
+                    if (pacientes.TryGetValue(receta.IdPaciente, out var pacienteParaAgregar))
+                    {
+                        receta.Paciente = pacienteParaAgregar;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Paciente no encontrado o no válido");
+                    }
+                }
+
+                return recetas;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al obtener recetas: " + ex.Message);
-                return new List<Receta>();
+                Console.WriteLine($"Error en: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task<List<Receta>> GetRecetasByPaciente(int IdPaciente)
+        {
+            try
+            {
+                var responseRecetas = await _supabase
+                    .From<Receta>()
+                    .Select("*")
+                    .Where(x => x.IdPaciente == IdPaciente)
+                    .Get();
+
+                var recetas = responseRecetas.Models;
+
+                return recetas;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en: {ex.Message}");
+                throw;
             }
         }
     }

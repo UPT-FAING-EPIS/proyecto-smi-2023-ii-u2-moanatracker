@@ -97,7 +97,7 @@
                             Margin="0,5,0,10"
                             FontSize="18"
                             HorizontalOptions="CenterAndExpand"
-                            Text="Asignar a usuario"
+                            Text="Listar Recetas"
                             TextColor="White" />
                         <Image
                             HeightRequest="100"

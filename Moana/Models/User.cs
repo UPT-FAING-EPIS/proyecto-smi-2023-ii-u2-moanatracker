@@ -5,7 +5,7 @@ namespace Moana.Models;
 [Table("usuarios")]
 public class User : BaseModel
 {
-    [PrimaryKey("id")]
+    [Column("id")]  
     public int Id { get; set; }
 
     [Column("name")]

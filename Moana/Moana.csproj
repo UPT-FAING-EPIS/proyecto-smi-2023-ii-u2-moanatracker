@@ -125,6 +125,12 @@
 	  <MauiXaml Update="View\Medico\AdministrarRecetas.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\Medico\AsignarDCI.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Medico\AsignarRecetaPaciente.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\Medico\DetallePaciente.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Maui.Graphics.Text;
 using Moana.Models;
 using Supabase;
 
@@ -73,7 +74,9 @@ namespace Moana.View
         private async Task ReloadPatients()
         {
             var pacienteService = new PacienteService(_supabaseClient);
-            var recetasList = await pacienteService.GetPacientesbyMedico(1);
+            var idmedico= await SecureStorage.GetAsync("IdMedico");
+
+            var recetasList = await pacienteService.GetPacientesbyMedico(Int32.Parse(idmedico));
             Patients.Clear();
             Patients = new ObservableCollection<Moana.Models.Receta>(recetasList);
         }
@@ -84,7 +87,9 @@ namespace Moana.View
             {
 
                 var pacienteService = new PacienteService(_supabaseClient);
-                var recetasList = await pacienteService.GetPacientesbyMedico(1);
+                var iddelmedico = await SecureStorage.GetAsync("IdMedico");
+
+                var recetasList = await pacienteService.GetPacientesbyMedico(Int32.Parse(iddelmedico));
 
                 Patients = new ObservableCollection<Moana.Models.Receta>(recetasList);
             }

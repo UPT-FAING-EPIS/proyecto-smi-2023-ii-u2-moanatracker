@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Moana.Models;
 using System.Net;
 
+
 namespace Moana
 {
     public interface IMedicoService
@@ -12,8 +13,7 @@ namespace Moana
         Task<List<Medico>> GetMedicos();
         Task<(bool success, string errorMessage)> CreateMedico(string nombre, string apellido, int fkidUsuario, string direccion, string contacto, int fkIdEspecialidad);
         
-    
-    
+        
     }
 
     public class MedicoService : IMedicoService

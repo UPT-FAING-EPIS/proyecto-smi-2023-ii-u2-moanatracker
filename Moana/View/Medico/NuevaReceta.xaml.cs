@@ -1,3 +1,5 @@
+using Moana.Models;
+using Moana.View.Medico;
 using Supabase;
 
 namespace Moana.View;
@@ -5,29 +7,42 @@ namespace Moana.View;
 public partial class NuevaReceta : ContentPage
 {
     private readonly Client _supabaseClient;
-    public NuevaReceta()
+    private int _IdPaciente;
+    public NuevaReceta(int IdPaciente)
 	{
         InitializeComponent();
+        _IdPaciente = IdPaciente;
         _supabaseClient = MauiProgram.CreateMauiApp().Services.GetRequiredService<Client>();
 
 	}
 
-    async private void Button_Clicked(object sender, EventArgs e)
+    private async void Button_Clicked(object sender, EventArgs e)
 	{
-        string email = CorreoEntry.Text;
-        string password = "upt2023"; 
-        string name = NombreEntry.Text;
-        var userService = new UserService(_supabaseClient);
-        
-        var (success, errorMessage) = await userService.CreateUser(email, password, name);
+        Receta nuevareceta = new Receta();
+        var idmedico = Int32.Parse(await SecureStorage.GetAsync("IdMedico"));
+        nuevareceta.IdPaciente = _IdPaciente;
+        nuevareceta.FechaCreacion = DateTime.Now.Date;
+        nuevareceta.ValidoHasta = ValidoHastaEntry.Date;
 
-        if (success)
+        nuevareceta.EstadoReceta = "1";
+        nuevareceta.TipoAtencion = TipoAtencionEntry.Text;
+        nuevareceta.Diagnostico = DiagnosticoEntry.Text;
+        nuevareceta.CIE10 = CIE10Entry.Text;
+        nuevareceta.IdMedico = idmedico;
+
+        var recetaservice = new RecetaService(_supabaseClient);
+        try
         {
-            await DisplayAlert("Create user ", "", "OK");
+            var recetacreada= await recetaservice.CreateReceta(nuevareceta);
+            if(recetacreada != null)
+            {
+            await Navigation.PushAsync(new AsignarDCI());
+
+            }
         }
-        else
+        catch (Exception ex)
         {
-             await DisplayAlert("not work", "not work", "OK");
+            Console.WriteLine(ex.ToString());
         }
     }
 

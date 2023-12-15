@@ -10,7 +10,7 @@
     Shell.NavBarIsVisible="False">
     <StackLayout>
         <Frame
-            Margin="0,10,0,10"
+            Margin="0,0,0,10"
             Padding="5"
             BackgroundColor="#EDF2F3"
             BorderColor="Transparent"
@@ -36,42 +36,54 @@
                     Text="Back" />
             </Grid>
         </Frame>
-        <VerticalStackLayout Margin="20">
-            <Label
-                Margin="0,20,0,10"
-                FontSize="18"
-                Text="Lista de Recetas:" />
-            <CollectionView
-                x:Name="CitasCollectionView"
-                Margin="10"
-                ItemsSource="{Binding Recetas}">
+        <Label
+            FontSize="25"
+            HorizontalOptions="Center"
+            Text="LISTA DE RECETAS" />
+
+        <StackLayout>
+            <CollectionView ItemsSource="{Binding ListaRecetas}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame
                             Margin="10"
                             Padding="10"
                             BackgroundColor="White"
-                            CornerRadius="10">
-                            <StackLayout Orientation="Vertical">
+                            CornerRadius="10"
+                            HasShadow="True">
+                            <StackLayout>
                                 <Label
                                     FontSize="18"
-                                    Text="{Binding CIE10}"
-                                    TextColor="Black" />
+                                    Text="{Binding IdReceta, StringFormat='Id receta: {0}'}"
+                                    TextColor="#3498DB" />
 
-                                <Label
-                                    FontSize="16"
-                                    Text="{Binding Paciente.Nombre}"
-                                    TextColor="Black" />
-
-                                <Label
-                                    FontSize="16"
-                                    Text="{Binding Diagnostico}"
-                                    TextColor="Black" />
+                                <StackLayout Orientation="Horizontal" Spacing="5">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="Paciente:" />
+                                    <Label FontSize="16" Text="{Binding Paciente.Nombre}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Spacing="5">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="14"
+                                        Text="Fecha Creación:" />
+                                    <Label FontSize="14" Text="{Binding FechaCreacion, StringFormat=' {0:d}'}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Spacing="5">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="14"
+                                        Text="Diagnóstico:" />
+                                    <Label FontSize="14" Text="{Binding Diagnostico}" />
+                                </StackLayout>
                             </StackLayout>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </VerticalStackLayout>
+        </StackLayout>
     </StackLayout>
+
 </ContentPage>

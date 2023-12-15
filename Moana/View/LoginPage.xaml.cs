@@ -4,6 +4,8 @@ using Supabase.Interfaces;
 using System;
 using Moana.Models;
 using Supabase;
+
+
 namespace Moana.View
 {
     public partial class LoginPage : ContentPage
@@ -36,24 +38,35 @@ namespace Moana.View
             if (isAuthenticated)
             {
                 var user = await _userService.GetUser(email);
-                var rolUser = user.Model.rolId.ToString();
-                var nameUser = user.Model.Name.ToString();
-                var IdUsuario = user.Model.Id;
-                Console.WriteLine($"El id del usuario es {IdUsuario}");
+                var rolUser = user.rolId.ToString();
+                var nameUser = user.Name.ToString();
+                var IdUser = user.Id;
+
+                await SecureStorage.SetAsync("IdSesion", IdUser.ToString());
+
 
                 if (rolUser.Equals("3"))
                 {
-                   
+                    var getidmed = await _userService.GetIdMedico(IdUser);
+                    if(getidmed != null )
+                    {
+                    await SecureStorage.SetAsync("IdMedico", getidmed.IdMedico.ToString());
+
+                    }
+
                     await Navigation.PushAsync(new MedicoHomePage(nameUser));
 
                     Navigation.RemovePage(this);
                 }
                 else if (rolUser.Equals("4"))
                 {
-                    var pacienteService = new PacienteService(_supabaseClient);
+                    var getidpac = await _userService.GetIdPaciente(IdUser);
+                    if (getidpac != null)
+                    {
+                    await SecureStorage.SetAsync("IdPaciente", getidpac.IdPaciente.ToString());
 
-                    //var IdPaciente = await pacienteService.GetPatientsbyIdUser();
-                    //Console.WriteLine($"El id del paciente es{IdPaciente}");
+                    }
+
                     await Navigation.PushAsync(new UserHomePage(nameUser));
 
                     Navigation.RemovePage(this);

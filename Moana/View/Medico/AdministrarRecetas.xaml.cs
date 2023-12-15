@@ -1,3 +1,5 @@
+using Moana.View.Medico;
+
 namespace Moana.View;
 
 public partial class AdministrarRecetas : ContentPage
@@ -15,13 +17,13 @@ public partial class AdministrarRecetas : ContentPage
 
     async private void NewReceta_Tapped(object sender, TappedEventArgs e)
     {
-        await Navigation.PushAsync(new NuevaReceta());
+        await Navigation.PushAsync(new AsignarRecetaPaciente());
 
     }
 
     async private void AssignUser_Tapped(object sender, TappedEventArgs e)
     {
-        await Navigation.PushAsync(new ListadoPacientes());
+        await Navigation.PushAsync(new ListadoRecetasMedico());
 
     }
 }

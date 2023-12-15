@@ -1,124 +1,52 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using Moana.Models;
 using Supabase;
 using Supabase.Interfaces;
 
 namespace Moana.View;
 
-public class PrescripcionItem : INotifyPropertyChanged
+public class RecetasViewModel : INotifyPropertyChanged
 {
-    
-    private string _nombreMedicamento;
-    public string NombreMedicamento
+    private ObservableCollection<Receta> _listaRecetas;
+
+    public ObservableCollection<Receta> ListaRecetas
     {
-        get { return _nombreMedicamento; }
+        get { return _listaRecetas; }
         set
         {
-            if (_nombreMedicamento != value)
+            if (_listaRecetas != value)
             {
-                _nombreMedicamento = value;
-                OnPropertyChanged(nameof(NombreMedicamento));
+                _listaRecetas = value;
+                OnPropertyChanged();
             }
         }
     }
-
-    private string _dosage;
-    public string Dosage
-    {
-        get { return _dosage; }
-        set
-        {
-            if (_dosage != value)
-            {
-                _dosage = value;
-                OnPropertyChanged(nameof(Dosage));
-            }
-        }
-    }
-
-    private string _hora;
-    public string Hora
-    {
-        get { return _hora; }
-        set
-        {
-            if (_hora != value)
-            {
-                _hora = value;
-                OnPropertyChanged(nameof(Hora));
-            }
-        }
-    }
-
     public event PropertyChangedEventHandler PropertyChanged;
-
-    protected virtual void OnPropertyChanged(string propertyName)
+    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
-}
 
-public class RecetasViewModel : INotifyPropertyChanged
-{
-    private ObservableCollection<PrescripcionItem> _prescripciones;
-
-    public ObservableCollection<PrescripcionItem> Prescripciones
-    {
-        get { return _prescripciones; }
-        set
-        {
-            if (_prescripciones != value)
-            {
-                _prescripciones = value;
-                OnPropertyChanged(nameof(Prescripciones));
-            }
-        }
-    }
     private readonly Client _supabaseClient;
     public RecetasViewModel()
     {
         _supabaseClient = MauiProgram.CreateMauiApp().Services.GetRequiredService<Client>();
-        Prescripciones = new ObservableCollection<PrescripcionItem>
-        {
-            new PrescripcionItem { NombreMedicamento = "Paracetamol", Dosage = "500mg", Hora = "En 8 horas" },
-            new PrescripcionItem { NombreMedicamento = "Ibuprofeno", Dosage = "200mg", Hora = "En 1 hora" },
-        };
-        LoadPrescriptions();
+        LoadRecetas();
     }
-    public async void LoadPrescriptions()
+    public async void LoadRecetas()
     {
         try
         {
-            Console.WriteLine("LoadPrescriptions method called");
+            var recetasService = new RecetaService(_supabaseClient);
+            var idMedico = await SecureStorage.GetAsync("IdMedico");
 
-            var test = "1";
-            var prescripService = new PrescripcionService(_supabaseClient);
-            var patientsList = await prescripService.GetPrescripcionesById(test);
-
-            Console.WriteLine($"Number of Prescriptions: {patientsList.Count}");
-
-            foreach (var patient in patientsList)
-            {
-                Console.WriteLine($"Prescripcion ID: {patient.Id}");
-                Console.WriteLine($"Fecha Inicio: {patient.Fecha_inicio}");
-                Console.WriteLine($"Fecha Fin: {patient.Fecha_fin}");
-                Console.WriteLine($"Medico ID: {patient.fkIdMedico}");
-                Console.WriteLine($"Paciente ID: {patient.fkIdPaciente}");
-                Console.WriteLine();
-            }
-
-            Console.WriteLine("After loop");
+            ListaRecetas = new ObservableCollection<Receta>(await recetasService.GetRecetasbyMedico(Int32.Parse(idMedico)));
         }
         catch (Exception ex)
         {
             Console.WriteLine("Error al obtener prescripciones: " + ex.Message);
         }
-    }
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    protected virtual void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

@@ -35,15 +35,12 @@ namespace Moana
                     .Where(x => x.FkIdUsuario == IdUser)
                     .Get();
 
-                Console.WriteLine($"Supabase response: {JsonConvert.SerializeObject(patients)}"); 
-                Console.WriteLine($"Supabase response: {patients.Model}"); 
-
                 return patients.Model;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error in GetPatientsbyIdUser: {ex.Message}");
-                return new Paciente();
+                Console.WriteLine($"Error en: {ex.Message}");
+                throw;
             }
         }
 
@@ -51,8 +48,6 @@ namespace Moana
         {
             try
             {
-                Console.WriteLine("Iniciando");
-
                 var responseRecetas = await _supabase
                     .From<Receta>()
                     .Select("*")
@@ -75,6 +70,7 @@ namespace Moana
                     if (pacienteParaAgregar != null)
                     {
                         receta.Paciente = pacienteParaAgregar;
+
                     }
                     else
                     {
