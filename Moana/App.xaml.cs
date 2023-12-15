@@ -1,5 +1,7 @@
 ﻿
+using Moana.Models;
 using Moana.View;
+using Moana.View.Medico;
 
 namespace Moana
 {
@@ -8,8 +10,7 @@ namespace Moana
         public App()
         {
             InitializeComponent();
-            var erick = "erick";
-            MainPage = new NavigationPage(new MedicoHomePage(erick));
+            MainPage = new NavigationPage(new MainPageView());
 
         }
     }

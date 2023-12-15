@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Moana.View.Medico.AsignarIndicacion"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="AsignarIndicacion"
+    BackgroundColor="#EDF2F3"
+    NavigationPage.BackButtonTitle=""
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="0,0,15,10" Spacing="10">
+            <Frame
+                Margin="0,10,0,10"
+                Padding="5"
+                BackgroundColor="#EDF2F3"
+                BorderColor="Transparent"
+                HorizontalOptions="Start"
+                WidthRequest="130">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        x:Name="Back"
+                        NumberOfTapsRequired="1"
+                        Tapped="Back_Tapped" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,Auto">
+                    <ImageButton
+                        HeightRequest="15"
+                        HorizontalOptions="Start"
+                        Source="angulo_izquierdo_black.svg"
+                        WidthRequest="25" />
+                    <Label
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        FontFamily="OpenSansRegular"
+                        FontSize="18"
+                        Text="Back" />
+                </Grid>
+            </Frame>
+
+            <StackLayout Padding="15,10,15,10">
+                <Label
+                    x:Name="Titulo"
+                    Margin="0,0,0,20"
+                    FontAttributes="Bold"
+                    FontSize="26"
+                    Text="" />
+
+                <Frame
+                    Margin="0,0,0,10"
+                    Padding="5"
+                    BorderColor="Transparent"
+                    CornerRadius="10">
+                    <Entry
+                        x:Name="DosisEntry"
+                        Margin="10,0,0,0"
+                        Placeholder="Dosis" />
+                </Frame>
+
+                <Frame
+                    Margin="0,0,0,10"
+                    Padding="5"
+                    BorderColor="Transparent"
+                    CornerRadius="10">
+                    <Entry
+                        x:Name="ViaEntry"
+                        Margin="10,0,0,0"
+                        Placeholder="Via" />
+                </Frame>
+                <StackLayout>
+                    <Label Text="Frecuencia:" />
+                    <HorizontalStackLayout>
+                        <Frame
+                            Margin="0,0,0,10"
+                            Padding="5"
+                            BorderColor="Transparent"
+                            CornerRadius="10">
+                            <Entry
+                                x:Name="FrecuenciaEntry"
+                                Margin="10,0,0,0"
+                                Keyboard="Numeric"
+                                Placeholder="Frecuencia" />
+                        </Frame>
+                        <Frame
+                            Margin="0,0,0,10"
+                            Padding="5"
+                            BorderColor="Transparent"
+                            CornerRadius="10">
+                            <Picker
+                                x:Name="FrecuenciaPicker"
+                                Title="Seleccionar"
+                                SelectedIndexChanged="FrecuenciaPicker_SelectedIndexChanged">
+                                <Picker.Items>
+                                    <x:String>Horas</x:String>
+                                    <x:String>Días</x:String>
+                                    <x:String>Semanas</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <Label Text="Duración:" />
+                    <HorizontalStackLayout>
+                        <Frame
+                            Margin="0,0,0,10"
+                            Padding="5"
+                            BorderColor="Transparent"
+                            CornerRadius="10">
+                            <Entry
+                                x:Name="DuracionEntry"
+                                Margin="10,0,0,0"
+                                Keyboard="Numeric"
+                                Placeholder="Duración" />
+                        </Frame>
+                        <Frame
+                            Margin="0,0,0,10"
+                            Padding="5"
+                            BorderColor="Transparent"
+                            CornerRadius="10">
+                            <Picker
+                                x:Name="DuracionPicker"
+                                Title="Seleccionar"
+                                SelectedIndexChanged="DuracionPicker_SelectedIndexChanged">
+                                <Picker.Items>
+                                    <x:String>Días</x:String>
+                                    <x:String>Semanas</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </Frame>
+                    </HorizontalStackLayout>
+                </StackLayout>
+
+                <Frame
+                    Margin="0,0,0,10"
+                    Padding="5"
+                    BorderColor="Transparent"
+                    CornerRadius="10">
+                    <Entry
+                        x:Name="ComentariosEntry"
+                        Margin="10,0,0,0"
+                        Placeholder="Comentarios adicionales" />
+                </Frame>
+
+            </StackLayout>
+            <Button
+                Margin="8"
+                Padding="5"
+                BackgroundColor="#0058B8"
+                Clicked="Button_Clicked"
+                CornerRadius="15"
+                HorizontalOptions="FillAndExpand"
+                Text="Siguiente"
+                TextColor="White" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

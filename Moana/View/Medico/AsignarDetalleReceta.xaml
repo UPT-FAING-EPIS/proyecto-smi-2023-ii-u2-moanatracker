@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Moana.View.NuevaReceta"
+    x:Class="Moana.View.Medico.AsignarDetalleReceta"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title=""
+    Title="AsignarDetalleReceta"
     BackgroundColor="#EDF2F3"
     NavigationPage.BackButtonTitle=""
     NavigationPage.HasNavigationBar="False"
@@ -43,30 +43,17 @@
                     Margin="0,0,0,20"
                     FontAttributes="Bold"
                     FontSize="26"
-                    Text="Ingrese la informacion de a receta" />
+                    Text="Ingrese los detalles de la receta" />
 
-                <Frame
-                    Margin="0,0,0,10"
-                    Padding="10"
-                    BorderColor="Transparent"
-                    CornerRadius="10">
-                    <StackLayout Margin="0" Padding="0">
-                        <Label
-                            Margin="0"
-                            Padding="0"
-                            Text="Valido hasta" />
-                        <DatePicker x:Name="ValidoHastaEntry" Margin="0,0,0,0" />
-                    </StackLayout>
-                </Frame>
                 <Frame
                     Margin="0,0,0,10"
                     Padding="5"
                     BorderColor="Transparent"
                     CornerRadius="10">
                     <Entry
-                        x:Name="TipoAtencionEntry"
+                        x:Name="DCIEntry"
                         Margin="10,0,0,0"
-                        Placeholder="Tipo Atencion" />
+                        Placeholder="Producto Farmaceutico o DCI" />
                 </Frame>
 
                 <Frame
@@ -75,22 +62,57 @@
                     BorderColor="Transparent"
                     CornerRadius="10">
                     <Entry
-                        x:Name="CIE10Entry"
+                        x:Name="ConcentracionEntry"
                         Margin="10,0,0,0"
-                        Placeholder="CIE10" />
+                        Placeholder="Concentracion" />
                 </Frame>
-
                 <Frame
                     Margin="0,0,0,10"
                     Padding="5"
                     BorderColor="Transparent"
                     CornerRadius="10">
                     <Entry
-                        x:Name="DiagnosticoEntry"
+                        x:Name="FormaEntry"
                         Margin="10,0,0,0"
-                        Placeholder="Diagnostico" />
+                        Placeholder="Forma" />
                 </Frame>
+                <Frame
+                    Margin="0,0,0,10"
+                    Padding="5"
+                    BorderColor="Transparent"
+                    CornerRadius="10">
+                    <Entry
+                        x:Name="CantidadEntry"
+                        Margin="10,0,0,0"
+                        Placeholder="Cantidad" />
+                </Frame>
+                <Button
+                    Margin="5"
+                    Padding="10,0,10,0"
+                    BackgroundColor="#479FFF"
+                    Clicked="Button_Clicked"
+                    CornerRadius="20"
+                    HorizontalOptions="StartAndExpand"
+                    Text="Agregar"
+                    TextColor="White" />
             </StackLayout>
+            <Label
+                Padding="10"
+                FontAttributes="Bold"
+                FontSize="15"
+                Text="Listado de DCI" />
+            <ListView x:Name="DetalleRecetaListView" ItemsSource="{Binding DetallesReceta}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5">
+                                <Label FontAttributes="Bold" Text="{Binding ProductoFarmaceutico}" />
+                                <Label Text="{Binding Concentracion}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <Button
                 Margin="8"
                 Padding="5"
@@ -103,4 +125,3 @@
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
-

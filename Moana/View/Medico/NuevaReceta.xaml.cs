@@ -36,7 +36,7 @@ public partial class NuevaReceta : ContentPage
             var recetacreada= await recetaservice.CreateReceta(nuevareceta);
             if(recetacreada != null)
             {
-            await Navigation.PushAsync(new AsignarDCI());
+            await Navigation.PushAsync(new AsignarDetalleReceta(recetacreada));
 
             }
         }

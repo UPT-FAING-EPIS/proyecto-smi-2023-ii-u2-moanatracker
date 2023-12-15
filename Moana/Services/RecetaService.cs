@@ -38,19 +38,8 @@ namespace Moana
             try
             {
                 Receta recetamedica = receta;
-                // Mostrar valores usando Console.WriteLine
-                Console.WriteLine($"IdReceta: {recetamedica.IdReceta}");
-                Console.WriteLine($"IdPaciente: {recetamedica.IdPaciente}");
-                Console.WriteLine($"FechaCreacion: {recetamedica.FechaCreacion}");
-                Console.WriteLine($"ValidoHasta: {recetamedica.ValidoHasta}");
-                Console.WriteLine($"EstadoReceta: {recetamedica.EstadoReceta}");
-                Console.WriteLine($"TipoAtencion: {recetamedica.TipoAtencion}");
-                Console.WriteLine($"CIE10: {recetamedica.CIE10}");
-                Console.WriteLine($"Diagnostico: {recetamedica.Diagnostico}");
-                Console.WriteLine($"IdMedico: {recetamedica.IdMedico}");    
                 var recetacreada =  await _supabase.From<Receta>().Insert(recetamedica);
 
-                Console.WriteLine(recetacreada.Model.IdReceta);
                 return recetacreada.Model;
             }
             catch(Exception e)

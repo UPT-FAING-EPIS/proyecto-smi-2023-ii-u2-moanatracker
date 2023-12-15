@@ -50,9 +50,7 @@
                 HorizontalOptions="Start"
                 Text="Crear Paciente"
                 WidthRequest="150" />
-            <ListView
-                x:Name="patientListView"
-                ItemsSource="{Binding ListadoPacientes}">
+            <ListView x:Name="patientListView" ItemsSource="{Binding ListadoPacientes}">
 
                 <ListView.ItemTemplate>
                     <DataTemplate>

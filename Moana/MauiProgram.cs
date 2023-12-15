@@ -2,6 +2,8 @@
 using Plugin.LocalNotification;
 using Supabase; 
 using Moana.View;
+using Moana.Models;
+
 namespace Moana
 {
     public static class MauiProgram
@@ -21,8 +23,8 @@ namespace Moana
             builder.Services.AddSingleton(supabaseClient);
             builder.Services.AddTransient<AuthenticationService>();
             builder.Services.AddTransient<UserService>();
-            builder.Services.AddTransient<PrescripcionService>();
             builder.Services.AddTransient<LoginPage>();
+            builder.Services.AddTransient<DetalleRecetaService>();
 
             // TODO: Register this client instance with your dependency injection container if you have one. 
             // This allows you to use it across your application. 

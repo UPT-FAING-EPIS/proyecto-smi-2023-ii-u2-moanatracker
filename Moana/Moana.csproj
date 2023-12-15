@@ -107,8 +107,8 @@
 	  <Compile Update="View\Medico\NuevaReceta.xaml.cs">
 	    <DependentUpon>NuevaReceta.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="View\Paciente\Indicacion.xaml.cs">
-	    <DependentUpon>Indicacion.xaml</DependentUpon>
+	  <Compile Update="View\Paciente\IndicacionDetalle.xaml.cs">
+	    <DependentUpon>IndicacionDetalle.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="View\Paciente\ListadoRecetas.xaml.cs">
 	    <DependentUpon>ListadoRecetas.xaml</DependentUpon>
@@ -125,7 +125,10 @@
 	  <MauiXaml Update="View\Medico\AdministrarRecetas.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Medico\AsignarDCI.xaml">
+	  <MauiXaml Update="View\Medico\AsignarDetalleReceta.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Medico\AsignarIndicacion.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\Medico\AsignarRecetaPaciente.xaml">
@@ -137,10 +140,10 @@
 	  <MauiXaml Update="View\Medico\ListadoRecetasMedico.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Paciente\DetalleReceta.xaml">
+	  <MauiXaml Update="View\Paciente\DetalleRecetaPaciente.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Paciente\Indicacion.xaml">
+	  <MauiXaml Update="View\Paciente\IndicacionDetalle.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\Paciente\HistorialPaciente.xaml">

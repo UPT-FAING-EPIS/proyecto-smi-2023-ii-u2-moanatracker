@@ -11,22 +11,21 @@ public partial class AsignarRecetaPaciente : ContentPage
 		InitializeComponent();
 		 BindingContext = new AsignarRecetaPacViewModel();
 
-            // Agregar controlador de eventos para el evento ItemTapped
             patientListView.ItemTapped += OnPatientTapped;
 
     }
 	
- private async void OnPatientTapped(object sender, ItemTappedEventArgs e)
+    private async void OnPatientTapped(object sender, ItemTappedEventArgs e)
+    {
+        if (e.Item is Models.Paciente selectedPatient)
         {
-            if (e.Item is Models.Paciente selectedPatient)
-            {
-                (BindingContext as AsignarRecetaPacViewModel)?.OnPatientSelected(selectedPatient);
-				var IdPaciente =  selectedPatient.IdPaciente;
-                await Navigation.PushAsync(new NuevaReceta(IdPaciente));
+            (BindingContext as AsignarRecetaPacViewModel)?.OnPatientSelected(selectedPatient);
+			var IdPaciente =  selectedPatient.IdPaciente;
+            await Navigation.PushAsync(new NuevaReceta(IdPaciente));
 
-                patientListView.SelectedItem = null;
-            }
+            patientListView.SelectedItem = null;
         }
+    }
     private void Back_Tapped(object sender, TappedEventArgs e)
     {
 		Navigation.PopAsync();

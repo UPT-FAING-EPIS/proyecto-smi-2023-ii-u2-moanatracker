@@ -19,13 +19,13 @@ namespace Moana.Models
         public string Via { get; set; }
 
         [Column("Frecuencia")]
-        public int? Frecuencia { get; set; }
+        public int Frecuencia { get; set; }
 
         [Column("TiempoFrecuencia")]
         public string TiempoFrecuencia { get; set; }
 
         [Column("Duracion")]
-        public int? Duracion { get; set; }
+        public int Duracion { get; set; }
 
         [Column("TiempoDuracion")]
         public string TiempoDuracion { get; set; }

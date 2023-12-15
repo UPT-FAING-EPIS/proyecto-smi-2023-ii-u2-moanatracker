@@ -1,3 +1,5 @@
+using Moana.View.Paciente;
+
 namespace Moana.View;
 
 public partial class UserHomePage : ContentPage
@@ -25,7 +27,7 @@ public partial class UserHomePage : ContentPage
 
     private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
-        Navigation.PushAsync(new DetalleReceta());
+        Navigation.PushAsync(new DetalleRecetaPaciente());
     }
 }
 
